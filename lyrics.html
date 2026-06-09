@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MuFashions — Lyrics & Chords</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Special+Elite&family=Inter:wght@300;400;500&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a;
+      --off-white: #e8e3d8;
+      --red: #8b1a1a;
+      --gold: #b8922a;
+      --light-gray: #999;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--black);
+      color: var(--off-white);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 18px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10,10,10,0.97);
+      border-bottom: 1px solid #1a1a1a;
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 4px;
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--light-gray);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--off-white); }
+
+    .page-header {
+      padding: 140px 48px 60px;
+      max-width: 960px;
+      margin: 0 auto;
+      border-bottom: 1px solid #1a1a1a;
+    }
+
+    .page-eyebrow {
+      font-family: 'Special Elite', serif;
+      font-size: 11px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .page-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(48px, 8vw, 80px);
+      letter-spacing: 4px;
+      color: var(--off-white);
+      line-height: 1;
+    }
+
+    .song-nav {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 32px 48px;
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      border-bottom: 1px solid #1a1a1a;
+    }
+
+    .song-nav a {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--light-gray);
+      text-decoration: none;
+      padding: 8px 0;
+      border-bottom: 1px solid transparent;
+      transition: all 0.2s;
+    }
+
+    .song-nav a:hover {
+      color: var(--off-white);
+      border-color: var(--red);
+    }
+
+    /* SONG SECTIONS */
+    .song-section {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 80px 48px;
+      border-bottom: 1px solid #111;
+    }
+
+    .song-meta {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    .song-header {}
+
+    .song-eyebrow {
+      font-family: 'Special Elite', serif;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .song-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(44px, 7vw, 72px);
+      letter-spacing: 4px;
+      color: var(--off-white);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .song-info {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #555;
+    }
+
+    .chord-key {
+      background: #0e0e0e;
+      border: 1px solid #1f1f1f;
+      padding: 20px 24px;
+      min-width: 220px;
+    }
+
+    .chord-key-title {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+
+    .chord-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chord-pill {
+      font-family: 'Courier Prime', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      background: #161616;
+      border: 1px solid #2a2a2a;
+      color: var(--off-white);
+      padding: 4px 12px;
+      letter-spacing: 1px;
+    }
+
+    .song-note {
+      font-family: 'Special Elite', serif;
+      font-size: 14px;
+      color: #666;
+      font-style: italic;
+      margin-bottom: 40px;
+      padding: 16px 20px;
+      border-left: 2px solid #1f1f1f;
+    }
+
+    /* CHORD SHEET */
+    .chord-sheet {
+      font-family: 'Courier Prime', monospace;
+      font-size: 14px;
+      line-height: 1;
+    }
+
+    .song-part {
+      margin-bottom: 40px;
+    }
+
+    .part-label {
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 16px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+    }
+
+    .chord-line {
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 2px;
+      margin-bottom: 2px;
+      white-space: pre;
+    }
+
+    .lyric-line {
+      color: #c5bfb4;
+      font-size: 14px;
+      margin-bottom: 14px;
+      white-space: pre-wrap;
+      line-height: 1.5;
+    }
+
+    .lyric-line em {
+      color: #777;
+      font-style: italic;
+    }
+
+    .strum-pattern {
+      margin-top: 32px;
+      padding: 20px 24px;
+      background: #0d0d0d;
+      border: 1px solid #1a1a1a;
+    }
+
+    .strum-title {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--light-gray);
+      margin-bottom: 12px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .strum-notation {
+      font-family: 'Courier Prime', monospace;
+      font-size: 16px;
+      color: var(--off-white);
+      letter-spacing: 4px;
+    }
+
+    .strum-key {
+      margin-top: 10px;
+      font-size: 11px;
+      color: #444;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 1px;
+    }
+
+    .song-divider {
+      width: 48px;
+      height: 2px;
+      background: var(--red);
+      margin: 40px 0;
+    }
+
+    footer {
+      border-top: 1px solid #1a1a1a;
+      padding: 48px;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 8px;
+      color: var(--red);
+      opacity: 0.3;
+      margin-bottom: 12px;
+    }
+
+    .footer-copy {
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: #2a2a2a;
+    }
+
+    @media (max-width: 640px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+      .page-header, .song-section, .song-nav { padding-left: 24px; padding-right: 24px; }
+      .chord-key { min-width: 100%; }
+      footer { padding: 40px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="index.html">MuFashions</a>
+    <ul class="nav-links">
+      <li><a href="index.html#story">Story</a></li>
+      <li><a href="index.html#discography">Music</a></li>
+      <li><a href="index.html#members">Band</a></li>
+      <li><a href="index.html#merch">Merch</a></li>
+      <li><a href="lyrics.html" style="color:var(--off-white)">Lyrics</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-header">
+    <div class="page-eyebrow">The Words & The Chords</div>
+    <div class="page-title">Lyrics</div>
+    <p style="font-family:'Special Elite', serif; font-size:13px; letter-spacing:3px; color:#555; margin-top:16px; text-transform:uppercase;">We Are the Music. We Are the Fashion.</p>
+  </div>
+
+  <div class="song-nav">
+    <a href="#sandwich">Sandwich</a>
+    <a href="#were-still-here">We're Still Here</a>
+    <a href="#open-the-door">Open The Door (It's Not Locked)</a>
+  </div>
+
+
+  <!-- ══════════════════════════════════════ -->
+  <!--  SANDWICH                              -->
+  <!-- ══════════════════════════════════════ -->
+  <section class="song-section" id="sandwich">
+    <div class="song-meta">
+      <div class="song-header">
+        <div class="song-eyebrow">You Already Ate (2000) &mdash; Lead Single</div>
+        <div class="song-title">Sandwich</div>
+        <div class="song-info">Written by Tyler Wolfe &mdash; Key of G &mdash; ~160 BPM</div>
+      </div>
+      <div class="chord-key">
+        <div class="chord-key-title">Chords Used</div>
+        <div class="chord-list">
+          <span class="chord-pill">G</span>
+          <span class="chord-pill">C</span>
+          <span class="chord-pill">D</span>
+          <span class="chord-pill">Em</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="song-note">Written in a single sitting, arranged by the full band within a week of being heard. The chord progression is deceptively simple — four chords that have been used a thousand times, in service of a lyric that has never existed before and will never exist again. Recorded live in the room. One take on the vocals. You can hear someone laugh at the end of the second chorus. It was left in.</p>
+
+    <div class="song-divider"></div>
+
+    <div class="chord-sheet">
+
+      <div class="song-part">
+        <div class="part-label">Intro</div>
+        <div class="chord-line">G        C        G        D</div>
+        <div class="lyric-line"><em>(x2 — let it breathe)</em></div>
+      </div>
+
+      <div class="song-part">
+        <div class="part-label">Verse 1</div>
+        <div class="chord-line">G                    C</div>
+        <div class="lyric-line">I see cheese, lying on your sandwich</div>
+        <div class="chord-line">G                         D</div>
+        <div class="lyric-line">What's the dill with the pickle, why can't you have plain cheese</div>
+        <div class="chord-line">G                    C</div>
+        <div class="lyric-line">I see cheese, lying on your sandwich</div>
+        <div class="chord-line">G             D          G</div>
+        <div class="lyric-line">Just the cheese, nothing else, just leave it be</div>
+      </div>
+
+      <div class="song-part">
+        <div class="part-label">Chorus</div>
+        <div class="chord-line">C              G</div>
+        <div class="lyric-line">I like cheese, you should too</div>
+        <div class="chord-line">C                    D</div>
+        <div class="lyric-line">It's really good, it's really nice</div>
+        <div class="chord-line">Em             C</div>
+        <div class="lyric-line">It's better than cow poo</div>
+        <div class="chord-line">G         D         G</div>
+        <div class="lyric-line">Yeah, it's better than cow poo</div>
+      </div>
+
+      <div class="song-part">
+        <div class="part-label">Verse 2</div>
+        <div class="chord-line">G                         C</div>
+        <div class="lyric-line">There's a moment in every afternoon</div>
+        <div class="chord-line">G                         D</div>
+        <div class="lyric-line">When a man must face his hunger and decide</div>
+        <div class="chord-line">G                    C</div>
+        <div class="lyric-line">Will he reach for something complicated</div>
+        <div class="chord-line">G              D           G</div>
+        <div class="lyric-line">Or keep it simple, plain, and dignified</div>
+      </div>
+
+      <div class="song-part">
+        <div class="part-label">Chorus</div>
+        <div class="chord-line">C              G</div>
+        <div class="lyric-line">I like cheese, you should too</div>
+        <div class="chord-line">C                    D</div>
+        <div class="lyric-line">It's really good, it's really nice</div>
+        <div class="chord-line">Em             C</div>
+        <div class="lyric-line">It's better than cow poo</div>
+        <div class="chord-line">G         D         G</div>
+        <div class="lyric-line">Yeah, it's better than cow poo</div>
+      </div>
+
+      <div class="song-part">
+        <div class="part-label">Bridge</div>
+        <div class="chord-line">Em           C</div>
+        <div class="lyric-line">Oops, I farted</div>
+        <div class="chord-line">G              D</div>
+        <div class="lyric-line">Think I cut the cheese</div>
+        <div class="chord-line">Em                 C</div>
+        <div class="lyric-line">I passed out gas, really fast</div>
+        <div class="chord-line">G              D</div>
+        <div class="lyric-line">I didn't see it coming</div>
+        <div class="chord-line">Em           C</div>
+        <div class="lyric-line">Oops, I farted</div>
+        <div class="chord-line">G              D</div>
+        <div class="lyric-line">But I don't care</div>
+        <div class="chord-line">Em              C             D</div>
+        <div class="lyric-line">Because the cheese was worth it, I swear</div>
+      </div>
+
+      <div class="song-part">
+        <div class="part-label">Final Chorus</div>
+        <div class="chord-line">C              G</div>
+        <div class="lyric-line">I like cheese, you should too</div>
+        <div class="chord-line">C                    D</div>
+        <div class="lyric-line">It's really good, it's really nice</div>
+        <div class="chord-line">Em             C</div>
+        <div class="lyric-line">It's better than cow poo</div>
+        <div class="chord-line">G         D         C         G</div>
+        <div class="lyric-line">Yeah, it's better — so much better — than cow poo</div>
+      </div>
+
+      <div class="song-part">
+        <div class="part-label">Outro</div>
+        <div class="chord-line">G        C        G        D</div>
+        <div class="lyric-line"><em>(repeat and fade — someone laughs)</em></div>
+      </div>
+
+    </div>
+
+    <div class="strum-pattern">
+      <div class="strum-title">Strum Pattern</div>
+      <div class="strum-notation">↓ ↓ ↑ &nbsp; ↓ ↑ ↓ ↑</div>
+      <div class="strum-key">1 &nbsp;2 &nbsp;+ &nbsp;3 &nbsp;+ &nbsp;4 &nbsp;+ &nbsp;&nbsp;— punk rock eighth notes, hit it hard</div>
+    </div>
+
+  </section>
+
+
+  <!-- ══════════════════════════════════════ -->
+  <!--  WE'RE STILL HERE                      -->
+  <!-- ══════════════════════════════════════ -->
+  <section class="song-section" id="were-still-here">
+    <div class="song-meta">
+      <div class="song-header">
+        <div class="song-eyebrow">The Follow-Up (2002) &mdash; Lead Single</div>
+        <div class="song-title">We're Still Here</div>
+        <div class="song-info">Written by Tyler & Nick Wolfe &mdash; Key of D &mdash; ~130 BPM</div>
+      </div>
+      <div class="chord-key">
+        <div class="chord-key-title">Chords Used</div>
+        <div class="chord-list">
+          <span class="chord-pill">D</span>
+          <span class="chord-pill">A</span>
+          <span class="chord-pill">Bm</span>
+          <span class="chord-pill">G</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="song-note">The first song written for the second record, and the clearest statement of intent the band ever put to tape. Co-written by the Wolfe brothers on a Tuesday afternoon in a Decatur apartment. The four chords are as simple as it gets. The melody does the work. Cahill cried at the first rehearsal. He has denied this.</p>
+
+    <div class="song-divider"></div>
+
+    <div class="chord-sheet">
+
+      <div class="song-part">
+        <div class="part-label">Intro</div>
+        <div class="chord-line">D        A        Bm       G</div>
+        <div class="lyric-line"><em>(x2 — clean, medium strum)</em></div>
+      </div>
+
+      <div class="song-part">
+        <div class="part-label">Verse 1</div>
+        <div class="chord-line">D                      A</div>
+        <div class="lyric-line">We drove back from West Virginia</div>
+        <div class="chord-line">Bm                        G</div>
+        <div class="lyric-line">With the windows down and nothing planned</div>
+        <div class="chord-line">D                         A</div>
+        <div class="lyric-line">Same five guys, same city waiting</div>
+        <div class="chord-line">Bm                   G</div>
+        <div class="lyric-line">Nothing in our pockets but the band</div>
+      </div>
+
+      <div class="song-part">
+        <div class="part-label">Pre-Chorus</div>
+        <div class="chord-line">Bm              A</div>
+        <div class="lyric-line">And nobody called us back</div>
+        <div class="chord-line">Bm                   A</div>
+        <div class="lyric-line">And the rooms were never packed</div>
+        <div class="chord-line">G</div>
+        <div class="lyric-line">But we played them anyway</div>
+      </div>
+
+      <div class="song-part">
+        <div class="part-label">Chorus</div>
+        <div class="chord-line">D              A</div>
+        <div class="lyric-line">We're still here, we're still playing</div>
+        <div class="chord-line">Bm                  G</div>
+        <div class="lyric-line">In the bars where nobody knows our name</div>
+        <div class="chord-line">D              A</div>
+        <div class="lyric-line">We're still here, still saying</div>
+        <div class="chord-line">Bm                       G</div>
+        <div class="lyric-line">Everything we came down here to say</div>
+        <div class="chord-line">D    A    Bm   G</div>
+        <div class="lyric-line">We're still here</div>
+      </div>
+
+      <div class="song-part">
+        <div class="part-label">Verse 2</div>
+        <div class="chord-line">D                         A</div>
+        <div class="lyric-line">Little Five Points on a Thursday</div>
+        <div class="chord-line">Bm                       G</div>
+        <div class="lyric-line">Fourteen people and a borrowed PA</div>
+        <div class="chord-line">D                      A</div>
+        <div class="lyric-line">Scott broke a string in the second song</div>
+        <div class="chord-line">Bm                    G</div>
+        <div class="lyric-line">Kept on playing anyway</div>
+      </div>
+
+      <div class="song-part">
+        <div class="part-label">Pre-Chorus</div>
+        <div class="chord-line">Bm                  A</div>
+        <div class="lyric-line">And Chris was at the door</div>
+        <div class="chord-line">Bm                       A</div>
+        <div class="lyric-line">Like he'd been a hundred times before</div>
+        <div class="chord-line">G</div>
+        <div class="lyric-line">Watching like he knew</div>
+      </div>
+
+      <div class="song-part">
+        <div class="part-label">Chorus</div>
+        <div class="chord-line">D              A</div>
+        <div class="lyric-line">We're still here, we're still playing</div>
+        <div class="chord-line">Bm                  G</div>
+        <div class="lyric-line">In the bars where nobody knows our name</div>
+        <div class="chord-line">D              A</div>
+        <div class="lyric-line">We're still here, still saying</div>
+        <div class="chord-line">Bm                       G</div>
+        <div class="lyric-line">Everything we came down here to say</div>
+        <div class="chord-line">D    A    Bm   G</div>
+        <div class="lyric-line">We're still here</div>
+      </div>
+
+      <div class="song-part">
+        <div class="part-label">Bridge</div>
+        <div class="chord-line">Bm                  G</div>
+        <div class="lyric-line">Maybe nobody's listening</div>
+        <div class="chord-line">D                   A</div>
+        <div class="lyric-line">Maybe that was never the point</div>
+        <div class="chord-line">Bm                G</div>
+        <div class="lyric-line">Five guys from Atlanta</div>
+        <div class="chord-line">D                        A</div>
+        <div class="lyric-line">In a room, in a song, at this moment</div>
+      </div>
+
+      <div class="song-part">
+        <div class="part-label">Final Chorus</div>
+        <div class="chord-line">D              A</div>
+        <div class="lyric-line">We're still here, we're still playing</div>
+        <div class="chord-line">Bm                  G</div>
+        <div class="lyric-line">In the bars where nobody knows our name</div>
+        <div class="chord-line">D              A</div>
+        <div class="lyric-line">We're still here, still saying</div>
+        <div class="chord-line">Bm                       G</div>
+        <div class="lyric-line">Everything we came down here to say</div>
+        <div class="chord-line">D              A</div>
+        <div class="lyric-line">We're still here, we're still here</div>
+        <div class="chord-line">Bm         G          D</div>
+        <div class="lyric-line">We're still here</div>
+      </div>
+
+    </div>
+
+    <div class="strum-pattern">
+      <div class="strum-title">Strum Pattern</div>
+      <div class="strum-notation">↓ &nbsp; ↓ ↑ &nbsp; ↑ ↓ ↑</div>
+      <div class="strum-key">1 &nbsp;&nbsp; 2 &nbsp;+ &nbsp;&nbsp;+ 4 &nbsp;+ &nbsp;&nbsp;— medium drive, let the G chord ring</div>
+    </div>
+
+  </section>
+
+
+  <!-- ══════════════════════════════════════ -->
+  <!--  OPEN THE DOOR                         -->
+  <!-- ══════════════════════════════════════ -->
+  <section class="song-section" id="open-the-door">
+    <div class="song-meta">
+      <div class="song-header">
+        <div class="song-eyebrow">You Already Ate (2000)</div>
+        <div class="song-title">Open The Door<br>(It's Not Locked)</div>
+        <div class="song-info">Written by Scott Heuke &mdash; Key of E &mdash; ~140 BPM</div>
+      </div>
+      <div class="chord-key">
+        <div class="chord-key-title">Chords Used</div>
+        <div class="chord-list">
+          <span class="chord-pill">E</span>
+          <span class="chord-pill">A</span>
+          <span class="chord-pill">B</span>
+          <span class="chord-pill">C#m</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="song-note">The only song on the debut written entirely by Scott Heuke, reportedly in response to a locked door that, as it turned out, was not locked. The metaphor is either very deep or completely absent. Heuke has declined to clarify. The opening riff is the catchiest thing on the record and everyone knows it, including Heuke, which is why he never mentions it.</p>
+
+    <div class="song-divider"></div>
+
+    <div class="chord-sheet">
+
+      <div class="song-part">
+        <div class="part-label">Intro Riff</div>
+        <div class="chord-line">E        E        A        B</div>
+        <div class="lyric-line"><em>(x2 — slightly palm-muted on the E, open up on A)</em></div>
+      </div>
+
+      <div class="song-part">
+        <div class="part-label">Verse 1</div>
+        <div class="chord-line">E                       A</div>
+        <div class="lyric-line">You've been standing on the porch for twenty minutes</div>
+        <div class="chord-line">E                    B</div>
+        <div class="lyric-line">In the rain, looking like you've got somewhere to be</div>
+        <div class="chord-line">E                         A</div>
+        <div class="lyric-line">I can see you through the window looking at it</div>
+        <div class="chord-line">E              B              E</div>
+        <div class="lyric-line">Looking at the door like it owes you something</div>
+      </div>
+
+      <div class="song-part">
+        <div class="part-label">Chorus</div>
+        <div class="chord-line">A              E</div>
+        <div class="lyric-line">Open the door, it's not locked</div>
+        <div class="chord-line">A                    B</div>
+        <div class="lyric-line">It was never locked, it was never locked</div>
+        <div class="chord-line">C#m            A</div>
+        <div class="lyric-line">You've been out there in the cold</div>
+        <div class="chord-line">E                   B</div>
+        <div class="lyric-line">And the whole time it was open</div>
+        <div class="chord-line">A         E         B         E</div>
+        <div class="lyric-line">Open the door</div>
+      </div>
+
+      <div class="song-part">
+        <div class="part-label">Verse 2</div>
+        <div class="chord-line">E                          A</div>
+        <div class="lyric-line">There's a thing about a door that looks like trouble</div>
+        <div class="chord-line">E                    B</div>
+        <div class="lyric-line">You assume the worst and leave yourself outside</div>
+        <div class="chord-line">E                       A</div>
+        <div class="lyric-line">All it takes is one hand and a little courage</div>
+        <div class="chord-line">E             B               E</div>
+        <div class="lyric-line">Or honestly just push — it opens wide</div>
+      </div>
+
+      <div class="song-part">
+        <div class="part-label">Chorus</div>
+        <div class="chord-line">A              E</div>
+        <div class="lyric-line">Open the door, it's not locked</div>
+        <div class="chord-line">A                    B</div>
+        <div class="lyric-line">It was never locked, it was never locked</div>
+        <div class="chord-line">C#m            A</div>
+        <div class="lyric-line">You've been out there in the cold</div>
+        <div class="chord-line">E                   B</div>
+        <div class="lyric-line">And the whole time it was open</div>
+        <div class="chord-line">A         E         B         E</div>
+        <div class="lyric-line">Open the door</div>
+      </div>
+
+      <div class="song-part">
+        <div class="part-label">Bridge</div>
+        <div class="chord-line">C#m                A</div>
+        <div class="lyric-line">I'm not trying to make a point here</div>
+        <div class="chord-line">E                  B</div>
+        <div class="lyric-line">I'm just saying, come inside</div>
+        <div class="chord-line">C#m               A</div>
+        <div class="lyric-line">It's warm and there is food here</div>
+        <div class="chord-line">E              B</div>
+        <div class="lyric-line">I think there's also cheese inside</div>
+      </div>
+
+      <div class="song-part">
+        <div class="part-label">Final Chorus</div>
+        <div class="chord-line">A              E</div>
+        <div class="lyric-line">Open the door, it's not locked</div>
+        <div class="chord-line">A                    B</div>
+        <div class="lyric-line">It was never locked, it was never locked</div>
+        <div class="chord-line">C#m            A</div>
+        <div class="lyric-line">You've been out there in the cold</div>
+        <div class="chord-line">E                   B</div>
+        <div class="lyric-line">And the whole time it was open</div>
+        <div class="chord-line">A         E         B</div>
+        <div class="lyric-line">Open the door, open the door</div>
+        <div class="chord-line">A         E</div>
+        <div class="lyric-line">Open the door</div>
+      </div>
+
+      <div class="song-part">
+        <div class="part-label">Outro</div>
+        <div class="chord-line">E        A        E        B</div>
+        <div class="lyric-line"><em>(repeat intro riff — let it resolve on E)</em></div>
+      </div>
+
+    </div>
+
+    <div class="strum-pattern">
+      <div class="strum-title">Strum Pattern</div>
+      <div class="strum-notation">↓ ↑ ↓ &nbsp; ↓ ↑ ↓ ↑</div>
+      <div class="strum-key">1 &nbsp;+ 2 &nbsp;&nbsp; 3 &nbsp;+ 4 &nbsp;+ &nbsp;&nbsp;— loose and driving, accent the 1 and 3</div>
+    </div>
+
+  </section>
+
+  <footer>
+    <div class="footer-logo">MuFashions</div>
+    <p class="footer-copy">Est. 1998, Atlanta, Georgia &mdash; Dissolved 2003 &mdash; Status: Unresolved</p>
+  </footer>
+
+</body>
+</html>

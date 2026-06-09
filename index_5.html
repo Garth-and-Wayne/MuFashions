@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MuFashions — Official Site</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Special+Elite&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a;
+      --off-white: #e8e3d8;
+      --cream: #f0ebe0;
+      --red: #8b1a1a;
+      --faded-red: #5c1212;
+      --gold: #b8922a;
+      --gray: #2a2a2a;
+      --mid-gray: #555;
+      --light-gray: #999;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--black);
+      color: var(--off-white);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.4;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 18px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(to bottom, rgba(10,10,10,0.95), transparent);
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 4px;
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--light-gray);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--off-white); }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center top, #1a0505 0%, #0a0a0a 70%);
+    }
+
+    .hero-rule-top {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(to right, transparent, var(--red), transparent);
+    }
+
+    .hero-eyebrow {
+      position: relative;
+      font-family: 'Special Elite', serif;
+      font-size: 12px;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+      opacity: 0.85;
+    }
+
+    .hero-title {
+      position: relative;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(90px, 18vw, 200px);
+      letter-spacing: 12px;
+      line-height: 0.88;
+      color: var(--off-white);
+      text-shadow: 0 0 80px rgba(139,26,26,0.4);
+    }
+
+    .hero-title span {
+      display: block;
+      color: var(--red);
+    }
+
+    .hero-sub {
+      position: relative;
+      margin-top: 32px;
+      font-family: 'Special Elite', serif;
+      font-size: 15px;
+      letter-spacing: 3px;
+      color: var(--light-gray);
+      max-width: 520px;
+    }
+
+    .hero-divider {
+      position: relative;
+      width: 1px;
+      height: 80px;
+      background: linear-gradient(to bottom, var(--red), transparent);
+      margin: 48px auto 0;
+    }
+
+    section {
+      padding: 100px 48px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .section-eyebrow {
+      font-family: 'Special Elite', serif;
+      font-size: 11px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(38px, 6vw, 64px);
+      letter-spacing: 4px;
+      color: var(--off-white);
+      margin-bottom: 40px;
+      line-height: 1;
+    }
+
+    .section-rule {
+      width: 48px;
+      height: 2px;
+      background: var(--red);
+      margin-bottom: 40px;
+    }
+
+    p + p { margin-top: 18px; }
+
+    p {
+      color: #c5bfb4;
+      font-size: 15px;
+      line-height: 1.85;
+    }
+
+    .pull-quote {
+      border-left: 3px solid var(--red);
+      padding: 20px 32px;
+      margin: 48px 0;
+      background: rgba(139,26,26,0.06);
+    }
+
+    .pull-quote p {
+      font-family: 'Special Elite', serif;
+      font-size: 20px;
+      line-height: 1.5;
+      color: var(--off-white);
+      font-style: italic;
+    }
+
+    .pull-quote cite {
+      display: block;
+      margin-top: 12px;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-style: normal;
+    }
+
+    .album-card {
+      border: 1px solid #1f1f1f;
+      padding: 36px;
+      margin-bottom: 24px;
+      background: #0e0e0e;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .album-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background: var(--red);
+    }
+
+    .album-year {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 13px;
+      letter-spacing: 4px;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .album-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      letter-spacing: 3px;
+      color: var(--off-white);
+      margin-bottom: 4px;
+    }
+
+    .album-label {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--light-gray);
+      margin-bottom: 20px;
+    }
+
+    .track-list {
+      list-style: none;
+      border-top: 1px solid #1f1f1f;
+      padding-top: 20px;
+      margin-top: 16px;
+    }
+
+    .track-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 9px 0;
+      border-bottom: 1px solid #161616;
+      font-size: 13px;
+      color: #999;
+    }
+
+    .track-list li:last-child { border-bottom: none; }
+
+    .track-num {
+      color: #444;
+      margin-right: 16px;
+      font-size: 11px;
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 1px;
+    }
+
+    .track-name { flex: 1; color: #b5b0a6; }
+    .track-name.featured { color: var(--off-white); font-weight: 500; }
+    .track-duration { color: #555; font-size: 12px; }
+
+    .single-badge {
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      background: var(--red);
+      color: var(--off-white);
+      padding: 2px 7px;
+      margin-left: 10px;
+      vertical-align: middle;
+    }
+
+    .members-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 2px;
+      margin-top: 8px;
+    }
+
+    .member-card {
+      background: #0e0e0e;
+      padding: 32px 28px;
+      border: 1px solid #1a1a1a;
+      transition: border-color 0.2s;
+    }
+
+    .member-card:hover { border-color: #333; }
+
+    .member-role {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .member-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 26px;
+      letter-spacing: 2px;
+      color: var(--off-white);
+      margin-bottom: 14px;
+    }
+
+    .member-bio {
+      font-size: 13px;
+      line-height: 1.75;
+      color: #888;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 32px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      bottom: 8px;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--red), transparent);
+    }
+
+    .timeline-item {
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -37px;
+      top: 7px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--red);
+      border: 2px solid var(--black);
+      box-shadow: 0 0 0 1px var(--red);
+    }
+
+    .timeline-year {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 14px;
+      letter-spacing: 3px;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+
+    .timeline-event {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--off-white);
+      margin-bottom: 6px;
+    }
+
+    .timeline-desc {
+      font-size: 13px;
+      color: #777;
+      line-height: 1.7;
+    }
+
+    .merch-box {
+      border: 1px solid #1f1f1f;
+      padding: 48px;
+      background: #0d0d0d;
+      text-align: center;
+      position: relative;
+    }
+
+    .merch-badge {
+      display: inline-block;
+      font-family: 'Special Elite', serif;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--gold);
+      padding: 6px 16px;
+      margin-bottom: 32px;
+    }
+
+    .merch-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 48px;
+      letter-spacing: 4px;
+      color: var(--off-white);
+      margin-bottom: 16px;
+    }
+
+    .merch-desc {
+      font-size: 14px;
+      color: #888;
+      max-width: 480px;
+      margin: 0 auto 32px;
+      line-height: 1.75;
+    }
+
+    .merch-note {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #444;
+    }
+
+    footer {
+      border-top: 1px solid #1a1a1a;
+      padding: 48px;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      letter-spacing: 8px;
+      color: var(--red);
+      opacity: 0.4;
+      margin-bottom: 16px;
+    }
+
+    .footer-copy {
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: #333;
+    }
+
+    .hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      margin: 0;
+    }
+
+    .heard-in-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1px;
+      background: #111;
+      border: 1px solid #111;
+      margin-top: 40px;
+    }
+
+    .heard-in-item {
+      background: #0e0e0e;
+      padding: 24px 20px;
+    }
+
+    .heard-source {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      letter-spacing: 2px;
+      color: var(--off-white);
+      margin-bottom: 4px;
+    }
+
+    .heard-track {
+      font-size: 12px;
+      color: var(--gold);
+      margin-bottom: 6px;
+      font-style: italic;
+    }
+
+    .heard-year {
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: #444;
+    }
+
+    @media (max-width: 640px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+      section { padding: 64px 24px; }
+      .album-card { padding: 24px 20px; }
+      footer { padding: 40px 24px; }
+      .merch-box { padding: 32px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-logo">MuFashions</div>
+    <ul class="nav-links">
+      <li><a href="#story">Story</a></li>
+      <li><a href="#discography">Music</a></li>
+      <li><a href="#members">Band</a></li>
+      <li><a href="#timeline">History</a></li>
+      <li><a href="#merch">Merch</a></li>
+      <li><a href="lyrics.html">Lyrics</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-rule-top"></div>
+    <div class="hero-eyebrow">Est. 1998 &mdash; Atlanta, Georgia</div>
+    <div class="hero-title">Mu<span>Fashions</span></div>
+    <p class="hero-sub">We are the Music. We are the Fashion.</p>
+    <div class="hero-divider"></div>
+  </div>
+
+  <hr class="hr" />
+
+  <section id="story">
+    <div class="section-eyebrow">The Story</div>
+    <h2 class="section-title">Born in West Virginia.<br>Raised in Atlanta.</h2>
+    <div class="section-rule"></div>
+
+    <p>It started in West Virginia, which is not where anyone expected it to start. Five kids from Atlanta — childhood friends who had known each other long enough to finish each other's sentences and argue about the endings — found themselves at the same high school, far enough from home to feel like something had to happen. In 1998, something did.</p>
+
+    <p>Tyler Wolfe had a half-written song and a borrowed guitar. Nick had an opinion about the chord structure. Scott Heuke had been waiting for exactly this kind of argument. By the end of that school year, the band existed. The name came from a single sentence — five words that Tyler said at a rehearsal that nobody can quite place in context anymore, but everyone remembers hearing: <em>"We are the Music. We are the Fashion."</em> MuFashions. It was obvious the moment it was said. Nobody argued about it, which was unusual.</p>
+
+    <p>They brought it back to Atlanta with them. The city gave the band room to grow into itself — basement shows in Decatur, late sets in Little Five Points bars that looked the other way on certain questions, a circuit of venues that rewarded persistence over polish. MuFashions had both, though they would have denied the polish.</p>
+
+    <div class="pull-quote">
+      <p>"MuFashions understood something that most bands their age didn't: that the joke and the feeling could occupy the same song at exactly the same time. That's rare. That's 'Sandwich.'"</p>
+      <cite>— Alternative Press, Spring 2004 (Retrospective)</cite>
+    </div>
+
+    <p>Travis Hagner came aboard as producer for the debut, recording the band in a rented space off Ponce de Leon Avenue using equipment of dubious provenance and a philosophy he described as "capture it before they talk themselves out of it." The result was <em>You Already Ate</em> — an album so specific in its references and so loose in its ambitions that it found almost no commercial traction and developed an almost immediate cult following. The lead single, "Sandwich," charted nowhere and was later covered by four separate artists who never publicly acknowledged the source material.</p>
+
+    <p>Chris Cahill managed the band's affairs with the dedication of someone who believed, always, that the call from a major label was arriving tomorrow. It didn't. But the band kept playing, and Cahill kept the lights on, and that was enough for longer than it should have been.</p>
+
+    <p>MuFashions officially dissolved in 2003. The final show was not announced as such. Those who attended did not know it was the last one. The band may not have known either. No recording exists, and no explanation has ever been offered. They have reunited periodically — briefly in 2009, reportedly again in 2019 — each time without announcement, and each time disappearing before anyone could be certain it had happened at all.</p>
+  </section>
+
+  <hr class="hr" />
+
+  <section id="discography">
+    <div class="section-eyebrow">Discography</div>
+    <h2 class="section-title">The Recorded Work</h2>
+    <div class="section-rule"></div>
+
+    <div class="album-card">
+      <div class="album-year">2000</div>
+      <div class="album-title">You Already Ate</div>
+      <div class="album-label">Self-Released / Ponce de Leon Sessions &mdash; Atlanta, GA</div>
+      <p style="font-size:13px; color:#777; line-height:1.7;">The debut. Recorded in eleven days. Mixed in three. Pressed on 400 CDs, 200 of which were sold, 150 of which were given away, and approximately 50 of which remain unaccounted for. If you have one, do not let it go.</p>
+      <ul class="track-list">
+        <li><span class="track-num">01</span><span class="track-name">Open The Door (It's Not Locked)</span><span class="track-duration">3:42</span></li>
+        <li><span class="track-num">02</span><span class="track-name featured">Sandwich <span class="single-badge">Single</span></span><span class="track-duration">4:11</span></li>
+        <li><span class="track-num">03</span><span class="track-name">March On Wednesdays</span><span class="track-duration">2:58</span></li>
+        <li><span class="track-num">04</span><span class="track-name">Three Guitars Is Fine</span><span class="track-duration">5:02</span></li>
+        <li><span class="track-num">05</span><span class="track-name">Little Five Points, 11 PM</span><span class="track-duration">3:29</span></li>
+        <li><span class="track-num">06</span><span class="track-name">West Virginia</span><span class="track-duration">6:14</span></li>
+        <li><span class="track-num">07</span><span class="track-name">Goodbye, Decatur</span><span class="track-duration">4:47</span></li>
+      </ul>
+    </div>
+
+    <div class="album-card">
+      <div class="album-year">2002</div>
+      <div class="album-title">The Follow-Up</div>
+      <div class="album-label">Tangentially Records &mdash; Limited Regional Distribution</div>
+      <p style="font-size:13px; color:#777; line-height:1.7;">The second record arrived two years later, more polished and somehow more strange. Travis Hagner had access to a real mixing board this time. The result is a document of a band at the precise moment they understood what they were — and chose to go further into it rather than out. It would be the last thing they released.</p>
+      <ul class="track-list">
+        <li><span class="track-num">01</span><span class="track-name">Overture For a Minor Occasion</span><span class="track-duration">1:12</span></li>
+        <li><span class="track-num">02</span><span class="track-name featured">We're Still Here <span class="single-badge">Single</span></span><span class="track-duration">3:55</span></li>
+        <li><span class="track-num">03</span><span class="track-name">Haiku For A Parking Lot</span><span class="track-duration">4:20</span></li>
+        <li><span class="track-num">04</span><span class="track-name">Nick's Part</span><span class="track-duration">2:40</span></li>
+        <li><span class="track-num">05</span><span class="track-name">Sandwich (Acoustic)</span><span class="track-duration">4:08</span></li>
+        <li><span class="track-num">06</span><span class="track-name">Last Show</span><span class="track-duration">7:33</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="hr" />
+
+  <section id="members">
+    <div class="section-eyebrow">The Band</div>
+    <h2 class="section-title">Who They Were</h2>
+    <div class="section-rule"></div>
+
+    <div class="members-grid">
+
+      <div class="member-card">
+        <div class="member-role">Lead Vocals / Guitar</div>
+        <div class="member-name">Tyler Wolfe</div>
+        <p class="member-bio">The gravitational center of MuFashions. Wolfe wrote the bulk of the band's catalog from a perspective that was simultaneously detached and deeply invested — a tension that defined the band's best work. His guitar playing was described by one Atlanta reviewer as "technically unimpressive in a way that somehow works completely." He took it as a compliment. It was.</p>
+      </div>
+
+      <div class="member-card">
+        <div class="member-role">Guitar / Vocals</div>
+        <div class="member-name">Nick Wolfe</div>
+        <p class="member-bio">The original co-architect. A childhood friend turned bandmate, Nick's guitar work provided the counterweight to Tyler's rhythm-first approach — melodic where Tyler was percussive, restrained where Tyler pressed forward. The Wolfe brothers' vocal harmonies, when they landed, were genuinely arresting. When they didn't, that was usually also the point.</p>
+      </div>
+
+      <div class="member-card">
+        <div class="member-role">Guitar / Vocals</div>
+        <div class="member-name">Scott Heuke</div>
+        <p class="member-bio">Heuke joined the band at its founding and immediately made three guitars feel not just logical but necessary. His contributions to "West Virginia" and "Three Guitars Is Fine" — the latter written in direct response to being told a three-guitar lineup was one too many — remain highlights of the catalog. He is the band's most technically accomplished member, which he is at pains to remind people.</p>
+      </div>
+
+      <div class="member-card">
+        <div class="member-role">Producer</div>
+        <div class="member-name">Travis Hagner</div>
+        <p class="member-bio">Hagner's production philosophy was simple: capture it before they talk themselves out of it. Working in a rented room off Ponce de Leon with minimal resources and a frankly dangerous amount of caffeine, he shaped the raw material of both MuFashions records into something that sounded intentional — which was not always a given in the room. A childhood friend who stayed in the room longer than most.</p>
+      </div>
+
+      <div class="member-card">
+        <div class="member-role">Management</div>
+        <div class="member-name">Chris Cahill</div>
+        <p class="member-bio">Cahill believed in MuFashions with the particular certainty of someone who cannot be argued out of a position by evidence alone. He booked the shows, handled the money (such as it was), negotiated with venues that had not heard of the band and were uncertain they wanted to, and was present at every performance, usually standing at the back of the room, watching the door. He was, by all accounts, essential.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="hr" />
+
+  <section id="timeline">
+    <div class="section-eyebrow">History</div>
+    <h2 class="section-title">A Record of Events</h2>
+    <div class="section-rule"></div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">1998</div>
+        <div class="timeline-event">Formation — West Virginia</div>
+        <p class="timeline-desc">Five childhood friends from Atlanta, attending the same high school in West Virginia, begin playing together. The name comes later. The arguments about chord structure begin immediately.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1998</div>
+        <div class="timeline-event">"Sandwich" Written</div>
+        <p class="timeline-desc">Tyler Wolfe writes the song in a single sitting. The band arranges it within the week. It is performed before the school year ends. Nothing about this seems remarkable at the time.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1999</div>
+        <div class="timeline-event">Return to Atlanta</div>
+        <p class="timeline-desc">The band relocates to Atlanta full-time. Basement shows in Decatur. Late sets in Little Five Points. A circuit of venues that reward showing up. MuFashions shows up.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2000</div>
+        <div class="timeline-event"><em>You Already Ate</em> Released</div>
+        <p class="timeline-desc">Recorded in eleven days off Ponce de Leon Avenue, produced by Travis Hagner. 400 CDs pressed and distributed primarily by hand. "Sandwich" does not chart. The people who find it do not let it go.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2001</div>
+        <div class="timeline-event">The Regional Circuit</div>
+        <p class="timeline-desc">MuFashions plays steadily across the Southeast. Georgia, Tennessee, the Carolinas. Venues of every description. Chris Cahill books all of it, attends all of it, and remains convinced the major-label call is coming.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2002</div>
+        <div class="timeline-event"><em>The Follow-Up</em> Released</div>
+        <p class="timeline-desc">The second record. More polished, more strange, more itself. Distributed slightly wider, heard slightly further. The band sounds, for the first time, like they have fully accepted what they are.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2003</div>
+        <div class="timeline-event">Dissolution</div>
+        <p class="timeline-desc">MuFashions plays a final show that is not announced as such. No recording exists. Those who were there describe it as very good. No further comment has been provided.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2009</div>
+        <div class="timeline-event">Reported Reunion</div>
+        <p class="timeline-desc">Unconfirmed reports of a private performance in Atlanta. "Sandwich" was heard. The band has neither confirmed nor denied this.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2019</div>
+        <div class="timeline-event">Rumored Appearance</div>
+        <p class="timeline-desc">Three separate sources, none of whom know each other, report hearing MuFashions play live somewhere in the Atlanta area. No further details are available. The band has not denied it.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr" />
+
+  <section>
+    <div class="section-eyebrow">Cultural Footprint</div>
+    <h2 class="section-title">As Heard In</h2>
+    <div class="section-rule"></div>
+    <p>The work of MuFashions has surfaced in various contexts over the years, almost always without attribution. The band has never pursued correction of the record. The record, however, is as follows.</p>
+
+    <div class="heard-in-grid">
+      <div class="heard-in-item">
+        <div class="heard-source">Southeast Overnight</div>
+        <div class="heard-track">"Sandwich" (unlicensed)</div>
+        <div class="heard-year">Regional cable, 2001</div>
+      </div>
+      <div class="heard-in-item">
+        <div class="heard-source">Various Artists: Atlanta Vol. 4</div>
+        <div class="heard-track">"Little Five Points, 11 PM"</div>
+        <div class="heard-year">Compilation, 2001</div>
+      </div>
+      <div class="heard-in-item">
+        <div class="heard-source">Unnamed Bar, Decatur</div>
+        <div class="heard-track">"March On Wednesdays"</div>
+        <div class="heard-year">In-rotation, 2002</div>
+      </div>
+      <div class="heard-in-item">
+        <div class="heard-source">College Radio, Athens</div>
+        <div class="heard-track">"Open The Door"</div>
+        <div class="heard-year">WUOG, 2001</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr" />
+
+  <section id="merch">
+    <div class="merch-box">
+      <div class="merch-badge">Limited Availability</div>
+      <div class="merch-title">The Shirt</div>
+      <p class="merch-desc">There is a shirt. You may have already seen it, and had questions. Those questions are valid. The shirt is not widely available. If you are holding one, you are holding something the majority of the world does not have access to, and likely does not know it is missing.</p>
+      <p class="merch-note">Inquire in person &mdash; that's how it's always worked</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">MuFashions</div>
+    <p class="footer-copy">Est. 1998, Atlanta, Georgia &mdash; Dissolved 2003 &mdash; Status: Unresolved</p>
+  </footer>
+
+</body>
+</html>
