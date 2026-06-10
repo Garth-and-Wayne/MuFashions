@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Static & Noise — MuFashions: You Already Ate (2000)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Georgia&family=Trebuchet+MS&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #e8e4dc;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 14px;
+      color: #222;
+      line-height: 1.7;
+    }
+
+    /* BLOGSPOT-ERA WRAPPER */
+    .page-wrap {
+      max-width: 780px;
+      margin: 0 auto;
+      background: #f5f2ec;
+      border-left: 1px solid #ccc;
+      border-right: 1px solid #ccc;
+      min-height: 100vh;
+    }
+
+    /* HEADER */
+    .blog-header {
+      background: #2a1a08;
+      padding: 20px 28px 18px;
+      border-bottom: 3px solid #8b3a1a;
+    }
+
+    .blog-name {
+      font-family: 'Trebuchet MS', sans-serif;
+      font-size: 28px;
+      font-weight: bold;
+      color: #e8d5a0;
+      letter-spacing: 1px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .blog-tagline {
+      font-family: 'Trebuchet MS', sans-serif;
+      font-size: 11px;
+      color: #9a7a4a;
+      margin-top: 4px;
+      letter-spacing: 1px;
+    }
+
+    /* NAV BAR */
+    .blog-nav {
+      background: #3a2a10;
+      padding: 6px 28px;
+      font-family: 'Trebuchet MS', sans-serif;
+      font-size: 12px;
+      display: flex;
+      gap: 20px;
+    }
+
+    .blog-nav a {
+      color: #c8a860;
+      text-decoration: none;
+    }
+
+    .blog-nav a:hover { text-decoration: underline; }
+
+    /* LAYOUT */
+    .layout {
+      display: flex;
+      gap: 0;
+    }
+
+    /* MAIN COLUMN */
+    .main-col {
+      flex: 1;
+      padding: 24px 28px;
+      border-right: 1px solid #d0c8b8;
+    }
+
+    /* POST */
+    .post {
+      margin-bottom: 40px;
+      padding-bottom: 32px;
+      border-bottom: 1px dashed #c0b8a8;
+    }
+
+    .post-title {
+      font-family: 'Trebuchet MS', sans-serif;
+      font-size: 20px;
+      font-weight: bold;
+      color: #2a1a08;
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+
+    .post-meta {
+      font-family: 'Trebuchet MS', sans-serif;
+      font-size: 11px;
+      color: #888;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #e0d8c8;
+    }
+
+    .post-meta a { color: #8b3a1a; text-decoration: none; }
+    .post-meta a:hover { text-decoration: underline; }
+
+    .post-body p {
+      margin-bottom: 14px;
+      font-size: 14px;
+      line-height: 1.75;
+      color: #333;
+    }
+
+    .post-body p:first-child::first-letter {
+      font-size: 42px;
+      font-weight: bold;
+      float: left;
+      line-height: 0.8;
+      margin: 4px 6px 0 0;
+      color: #2a1a08;
+    }
+
+    .album-info {
+      float: right;
+      margin: 0 0 16px 20px;
+      padding: 12px 14px;
+      background: #ece5d5;
+      border: 1px solid #c8b890;
+      font-family: 'Trebuchet MS', sans-serif;
+      font-size: 12px;
+      width: 200px;
+      line-height: 1.8;
+    }
+
+    .album-info-title {
+      font-weight: bold;
+      font-size: 13px;
+      color: #2a1a08;
+      border-bottom: 1px solid #c8b890;
+      padding-bottom: 6px;
+      margin-bottom: 8px;
+    }
+
+    .album-info-row {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .album-info-label { color: #888; }
+    .album-info-value { color: #333; font-weight: bold; }
+
+    .rating {
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px solid #c8b890;
+      font-size: 18px;
+      color: #8b3a1a;
+      letter-spacing: 2px;
+    }
+
+    .pull-quote {
+      border-left: 3px solid #8b3a1a;
+      margin: 20px 0;
+      padding: 10px 16px;
+      font-style: italic;
+      color: #555;
+      background: #ece5d5;
+      font-size: 15px;
+    }
+
+    .track-highlight {
+      background: #ece5d5;
+      border: 1px solid #d0c8b0;
+      padding: 10px 14px;
+      margin: 16px 0;
+      font-family: 'Trebuchet MS', sans-serif;
+      font-size: 12px;
+    }
+
+    .track-highlight-title {
+      font-weight: bold;
+      color: #2a1a08;
+      margin-bottom: 6px;
+      font-size: 13px;
+    }
+
+    .track-highlight li {
+      margin-left: 16px;
+      margin-bottom: 3px;
+      color: #555;
+    }
+
+    .post-footer {
+      margin-top: 20px;
+      padding-top: 12px;
+      border-top: 1px solid #e0d8c8;
+      font-family: 'Trebuchet MS', sans-serif;
+      font-size: 11px;
+      color: #888;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .post-tags a {
+      color: #8b3a1a;
+      text-decoration: none;
+      margin-right: 6px;
+    }
+
+    .comments-link {
+      color: #8b3a1a;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* COMMENTS */
+    .comments-section {
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 2px solid #c0b8a8;
+    }
+
+    .comments-title {
+      font-family: 'Trebuchet MS', sans-serif;
+      font-size: 14px;
+      font-weight: bold;
+      color: #2a1a08;
+      margin-bottom: 16px;
+    }
+
+    .comment {
+      margin-bottom: 16px;
+      padding: 12px 14px;
+      background: #ece5d5;
+      border: 1px solid #d0c8b8;
+      font-size: 13px;
+    }
+
+    .comment-meta {
+      font-family: 'Trebuchet MS', sans-serif;
+      font-size: 11px;
+      color: #888;
+      margin-bottom: 6px;
+    }
+
+    .comment-meta strong { color: #8b3a1a; }
+    .comment-body { color: #444; line-height: 1.6; }
+
+    /* SIDEBAR */
+    .sidebar {
+      width: 200px;
+      padding: 20px 16px;
+      font-family: 'Trebuchet MS', sans-serif;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+
+    .sidebar-section {
+      margin-bottom: 24px;
+    }
+
+    .sidebar-title {
+      font-size: 13px;
+      font-weight: bold;
+      color: #2a1a08;
+      border-bottom: 2px solid #8b3a1a;
+      padding-bottom: 4px;
+      margin-bottom: 10px;
+    }
+
+    .sidebar ul { list-style: none; }
+    .sidebar ul li { margin-bottom: 5px; }
+    .sidebar ul li a { color: #8b3a1a; text-decoration: none; font-size: 12px; }
+    .sidebar ul li a:hover { text-decoration: underline; }
+
+    .sidebar p { color: #666; line-height: 1.6; font-size: 12px; margin-bottom: 8px; }
+
+    .archive-item {
+      color: #555;
+      padding: 3px 0;
+      border-bottom: 1px dotted #d0c8b8;
+    }
+
+    /* FOOTER */
+    .blog-footer {
+      background: #2a1a08;
+      padding: 12px 28px;
+      font-family: 'Trebuchet MS', sans-serif;
+      font-size: 11px;
+      color: #9a7a4a;
+      text-align: center;
+      border-top: 3px solid #8b3a1a;
+    }
+
+    .clearfix::after { content: ''; display: table; clear: both; }
+  </style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <!-- HEADER -->
+  <div class="blog-header">
+    <a class="blog-name" href="#">Static &amp; Noise</a>
+    <div class="blog-tagline">independent music from the southeast and everywhere else &nbsp;|&nbsp; atlanta, ga &nbsp;|&nbsp; since 2002</div>
+  </div>
+
+  <div class="blog-nav">
+    <a href="#">Home</a>
+    <a href="#">Reviews</a>
+    <a href="#">Shows</a>
+    <a href="#">Interviews</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </div>
+
+  <!-- LAYOUT -->
+  <div class="layout">
+
+    <!-- MAIN COLUMN -->
+    <div class="main-col">
+
+      <div class="post">
+
+        <div class="post-title">MuFashions — <em>You Already Ate</em> (Self-Released, 2000)</div>
+        <div class="post-meta">
+          Posted by <a href="#">daveATLsouth</a> &nbsp;|&nbsp; March 14, 2004 &nbsp;|&nbsp;
+          Filed under: <a href="#">reviews</a>, <a href="#">atlanta</a>, <a href="#">indie rock</a>, <a href="#">regional</a>
+        </div>
+
+        <div class="post-body clearfix">
+
+          <div class="album-info">
+            <div class="album-info-title">You Already Ate</div>
+            <div class="album-info-row"><span class="album-info-label">Artist:</span><span class="album-info-value">MuFashions</span></div>
+            <div class="album-info-row"><span class="album-info-label">Year:</span><span class="album-info-value">2000</span></div>
+            <div class="album-info-row"><span class="album-info-label">Label:</span><span class="album-info-value">Self-Released</span></div>
+            <div class="album-info-row"><span class="album-info-label">Origin:</span><span class="album-info-value">Atlanta, GA</span></div>
+            <div class="album-info-row"><span class="album-info-label">Tracks:</span><span class="album-info-value">7</span></div>
+            <div class="rating">★★★★☆</div>
+          </div>
+
+          <p>I'll be honest with you: I almost didn't write this one up. <em>You Already Ate</em> has been sitting on my desk since sometime in 2001, when a guy at a MuFashions show at Smith's Olde Bar handed it to me after their set and said "just listen to track two." I took it home, put it on, forgot about it for three years, and found it again last month under a copy of the <em>Creative Loafing</em> from the week the Braves choked in the playoffs. So here we are.</p>
+
+          <p>MuFashions were — are? nobody seems to know — a five-piece out of Atlanta by way of West Virginia, which is a sentence I never expected to type. The lineup was Tyler Wolfe on lead vocals and guitar, his brother Nick Wolfe on guitar and vocals, Scott Heuke rounding out what became an unusual three-guitar configuration, Travis Hagner producing, and Chris Cahill handling management with the particular focused calm of a man who has never once doubted that success is right around the corner. They put out this record in 2000, played shows around the Southeast for a couple of years, and then quietly stopped. No announcement. No farewell tour. They were just there and then they weren't, the way a lot of good Atlanta bands end up.</p>
+
+          <div class="pull-quote">
+            "Three guitars should not work this well. Heuke's contribution sounds inevitable in a way that takes real talent to pull off — the kind of thing you only notice when it isn't there."
+          </div>
+
+          <p>The record itself is seven tracks and about 35 minutes, recorded in what sounds like one room by people who understood that the fastest way to kill a good song is to overthink the production. Hagner — who produced the whole thing and is listed in the liner notes only as "T. Hagner, Ponce de Leon sessions" — made the right call on every decision, which is mostly: leave it alone. You can hear the room. You can occasionally hear someone breathing. On the last track, "Goodbye, Decatur," you can hear what sounds like a door closing in the background during the final chord. It stays. Of course it stays.</p>
+
+          <p>The songs themselves are something of a puzzle. They're funny without being jokey, specific without being insular, and emotionally messy in ways that feel true rather than manufactured. "Sandwich," the second track and the closest thing to a single this album has, is about exactly what the title suggests — and also, somehow, about something else entirely. Wolfe's vocal delivery is so straight-faced that the whole thing operates in a kind of dual register: you're laughing and you're not, simultaneously, for the entire four minutes. It's a harder trick to pull off than it sounds, and most bands that try it fail. MuFashions don't fail.</p>
+
+          <div class="track-highlight">
+            <div class="track-highlight-title">Standout Tracks</div>
+            <ul>
+              <li><strong>Sandwich</strong> — the one you'll want to play for people. Give it two listens.</li>
+              <li><strong>West Virginia</strong> — six minutes that earns every one of them.</li>
+              <li><strong>Little Five Points, 11 PM</strong> — if you've been there you know exactly what this song is about.</li>
+              <li><strong>Goodbye, Decatur</strong> — the closer. Don't skip it.</li>
+            </ul>
+          </div>
+
+          <p>The three-guitar lineup, which by all rights should be a disaster, turns out to be the record's secret weapon. Heuke's contribution is hard to describe precisely because it sounds inevitable — you only notice what he's doing when you try to imagine the song without it. Nick Wolfe plays melodic where Tyler plays rhythmic and the two approaches create a center of gravity that keeps even the longer tracks from drifting. "West Virginia," which clocks in at over six minutes, should feel indulgent and doesn't. That's not an accident.</p>
+
+          <p>I don't know what happened to MuFashions. Their website has been down for at least a year. Cahill, who I briefly spoke to at a Variety Playhouse show in 2002, said they were "still figuring some things out," which is the kind of answer that in retrospect sounds like an ending. Wolfe apparently moved. Heuke I see around sometimes. Nobody seems to know about a second record, though I've heard rumors of sessions.</p>
+
+          <p>What I do know is that <em>You Already Ate</em> is one of the better records to come out of Atlanta in the last five years and almost nobody has heard it. There were reportedly 400 copies pressed. I have no idea how many are left. If you find one, don't let it go.</p>
+
+        </div>
+
+        <div class="post-footer">
+          <div class="post-tags">
+            Tags: <a href="#">mufashions</a> <a href="#">atlanta</a> <a href="#">indie</a> <a href="#">regional</a> <a href="#">you already ate</a>
+          </div>
+          <a class="comments-link" href="#">7 comments</a>
+        </div>
+
+        <!-- COMMENTS -->
+        <div class="comments-section">
+          <div class="comments-title">7 Comments</div>
+
+          <div class="comment">
+            <div class="comment-meta"><strong>buckheadgreg</strong> &nbsp;|&nbsp; March 14, 2004 at 11:42 AM</div>
+            <div class="comment-body">Finally. I've been waiting for someone to write this up for two years. Saw them three times — Smith's, the Earl, and once at a venue in Decatur that I think is a nail salon now. "Sandwich" live was something else entirely. Wolfe did not move a single muscle in his face the entire song.</div>
+          </div>
+
+          <div class="comment">
+            <div class="comment-meta"><strong>daveATLsouth</strong> &nbsp;|&nbsp; March 14, 2004 at 12:15 PM</div>
+            <div class="comment-body">@buckheadgreg — that tracks completely with what I know about how he plays. The deadpan is the delivery. It IS the song.</div>
+          </div>
+
+          <div class="comment">
+            <div class="comment-meta"><strong>southernrockfan1979</strong> &nbsp;|&nbsp; March 14, 2004 at 2:33 PM</div>
+            <div class="comment-body">Never heard of these guys. Four stars seems high for a self-released CD from 2000 that nobody's heard of. Will check out if I can find a copy.</div>
+          </div>
+
+          <div class="comment">
+            <div class="comment-meta"><strong>daveATLsouth</strong> &nbsp;|&nbsp; March 14, 2004 at 3:01 PM</div>
+            <div class="comment-body">@southernrockfan1979 — "nobody's heard of it" and "not worth four stars" are not the same thing. That's kind of the whole point of this blog.</div>
+          </div>
+
+          <div class="comment">
+            <div class="comment-meta"><strong>LFP_local</strong> &nbsp;|&nbsp; March 15, 2004 at 9:18 AM</div>
+            <div class="comment-body">I went to high school with someone who knew these guys. They apparently spent a summer working construction in Texas before they started playing shows in Atlanta. There's a whole story there that never made it into any of the songs except maybe "West Virginia." Someone should interview them if they ever resurface.</div>
+          </div>
+
+          <div class="comment">
+            <div class="comment-meta"><strong>heukefan</strong> &nbsp;|&nbsp; March 16, 2004 at 4:44 PM</div>
+            <div class="comment-body">The three guitar thing really does work. I remember being skeptical at the Smith's show and then just kind of giving up being skeptical about ten minutes in. Heuke is underrated. The whole band is underrated. This is a good writeup.</div>
+          </div>
+
+          <div class="comment">
+            <div class="comment-meta"><strong>anonymous</strong> &nbsp;|&nbsp; April 2, 2004 at 8:07 PM</div>
+            <div class="comment-body">Does anyone know if they're playing anymore? Asking for a friend who has been asking me about this band for six months.</div>
+          </div>
+
+        </div>
+        <!-- END COMMENTS -->
+
+      </div>
+      <!-- END POST -->
+
+    </div>
+    <!-- END MAIN COL -->
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+      <div class="sidebar-section">
+        <div class="sidebar-title">About This Blog</div>
+        <p>Static & Noise covers independent music from Atlanta and the Southeast. We write about records that deserve more attention than they get. Started in 2002 by Dave and occasionally other people.</p>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-title">Recent Reviews</div>
+        <ul>
+          <li><a href="#">Widespread Panic — "Everyday"</a></li>
+          <li><a href="#">Drive-By Truckers — "Decoration Day"</a></li>
+          <li><a href="#">Various — ATL Underground Vol. 4</a></li>
+          <li><a href="#">MuFashions — "You Already Ate"</a></li>
+          <li><a href="#">Dead Confederate — demo tape</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-title">Archive</div>
+        <ul>
+          <li class="archive-item"><a href="#">March 2004 (4)</a></li>
+          <li class="archive-item"><a href="#">February 2004 (6)</a></li>
+          <li class="archive-item"><a href="#">January 2004 (5)</a></li>
+          <li class="archive-item"><a href="#">December 2003 (3)</a></li>
+          <li class="archive-item"><a href="#">November 2003 (7)</a></li>
+          <li class="archive-item"><a href="#">2002–2003 (41)</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-title">Links</div>
+        <ul>
+          <li><a href="#">Creative Loafing ATL</a></li>
+          <li><a href="#">Variety Playhouse</a></li>
+          <li><a href="#">The Earl</a></li>
+          <li><a href="#">Smith's Olde Bar</a></li>
+          <li><a href="#">Insound</a></li>
+          <li><a href="#">Pitchfork</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-title">Contact</div>
+        <p>Send promos or show listings to staticandnoise [at] gmail [dot] com. We can't promise a review but we listen to everything.</p>
+      </div>
+
+    </div>
+    <!-- END SIDEBAR -->
+
+  </div>
+  <!-- END LAYOUT -->
+
+  <div class="blog-footer">
+    Static &amp; Noise &copy; 2004 &nbsp;|&nbsp; Atlanta, GA &nbsp;|&nbsp; Powered by Blogger &nbsp;|&nbsp; Best viewed in Internet Explorer 6.0
+  </div>
+
+</div>
+
+</body>
+</html>

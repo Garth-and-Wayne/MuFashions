@@ -12,12 +12,8 @@
     :root {
       --black: #0a0a0a;
       --off-white: #e8e3d8;
-      --cream: #f0ebe0;
       --red: #8b1a1a;
-      --faded-red: #5c1212;
       --gold: #b8922a;
-      --gray: #2a2a2a;
-      --mid-gray: #555;
       --light-gray: #999;
     }
 
@@ -42,6 +38,7 @@
       opacity: 0.4;
     }
 
+    /* NAV */
     nav {
       position: fixed;
       top: 0;
@@ -68,7 +65,6 @@
     }
 
     .nav-links a {
-      font-family: 'Inter', sans-serif;
       font-size: 11px;
       font-weight: 500;
       letter-spacing: 3px;
@@ -80,6 +76,7 @@
 
     .nav-links a:hover { color: var(--off-white); }
 
+    /* HERO */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -100,11 +97,17 @@
 
     .hero-rule-top {
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       height: 3px;
       background: linear-gradient(to right, transparent, var(--red), transparent);
+    }
+
+    .hero-logo {
+      position: relative;
+      width: min(380px, 80vw);
+      margin-bottom: 36px;
+      /* invert the white logo to show on dark background */
+      filter: invert(1) brightness(0.85);
     }
 
     .hero-eyebrow {
@@ -114,33 +117,26 @@
       letter-spacing: 6px;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 28px;
+      margin-bottom: 16px;
       opacity: 0.85;
     }
 
-    .hero-title {
+    .hero-tagline {
       position: relative;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(90px, 18vw, 200px);
-      letter-spacing: 12px;
-      line-height: 0.88;
-      color: var(--off-white);
-      text-shadow: 0 0 80px rgba(139,26,26,0.4);
-    }
-
-    .hero-title span {
-      display: block;
-      color: var(--red);
-    }
-
-    .hero-sub {
-      position: relative;
-      margin-top: 32px;
       font-family: 'Special Elite', serif;
-      font-size: 15px;
-      letter-spacing: 3px;
+      font-size: 16px;
+      letter-spacing: 4px;
       color: var(--light-gray);
-      max-width: 520px;
+      margin-bottom: 8px;
+    }
+
+    .hero-tagline-sub {
+      position: relative;
+      font-family: 'Special Elite', serif;
+      font-size: 13px;
+      letter-spacing: 3px;
+      color: #555;
+      font-style: italic;
     }
 
     .hero-divider {
@@ -151,6 +147,7 @@
       margin: 48px auto 0;
     }
 
+    /* SECTIONS */
     section {
       padding: 100px 48px;
       max-width: 960px;
@@ -215,6 +212,7 @@
       font-style: normal;
     }
 
+    /* DISCOGRAPHY */
     .album-card {
       border: 1px solid #1f1f1f;
       padding: 36px;
@@ -227,10 +225,8 @@
     .album-card::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 3px;
-      height: 100%;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
       background: var(--red);
     }
 
@@ -299,6 +295,7 @@
       vertical-align: middle;
     }
 
+    /* MEMBERS */
     .members-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -337,33 +334,24 @@
       color: #888;
     }
 
-    .timeline {
-      position: relative;
-      padding-left: 32px;
-    }
+    /* TIMELINE */
+    .timeline { position: relative; padding-left: 32px; }
 
     .timeline::before {
       content: '';
       position: absolute;
-      left: 0;
-      top: 8px;
-      bottom: 8px;
+      left: 0; top: 8px; bottom: 8px;
       width: 1px;
       background: linear-gradient(to bottom, var(--red), transparent);
     }
 
-    .timeline-item {
-      margin-bottom: 40px;
-      position: relative;
-    }
+    .timeline-item { margin-bottom: 40px; position: relative; }
 
     .timeline-item::before {
       content: '';
       position: absolute;
-      left: -37px;
-      top: 7px;
-      width: 9px;
-      height: 9px;
+      left: -37px; top: 7px;
+      width: 9px; height: 9px;
       border-radius: 50%;
       background: var(--red);
       border: 2px solid var(--black);
@@ -385,12 +373,9 @@
       margin-bottom: 6px;
     }
 
-    .timeline-desc {
-      font-size: 13px;
-      color: #777;
-      line-height: 1.7;
-    }
+    .timeline-desc { font-size: 13px; color: #777; line-height: 1.7; }
 
+    /* MERCH */
     .merch-box {
       border: 1px solid #1f1f1f;
       padding: 48px;
@@ -409,6 +394,13 @@
       background: var(--gold);
       padding: 6px 16px;
       margin-bottom: 32px;
+    }
+
+    .merch-logo {
+      width: min(280px, 70vw);
+      margin: 0 auto 32px;
+      display: block;
+      filter: invert(1) brightness(0.85);
     }
 
     .merch-title {
@@ -434,33 +426,7 @@
       color: #444;
     }
 
-    footer {
-      border-top: 1px solid #1a1a1a;
-      padding: 48px;
-      text-align: center;
-    }
-
-    .footer-logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 36px;
-      letter-spacing: 8px;
-      color: var(--red);
-      opacity: 0.4;
-      margin-bottom: 16px;
-    }
-
-    .footer-copy {
-      font-size: 11px;
-      letter-spacing: 2px;
-      color: #333;
-    }
-
-    .hr {
-      border: none;
-      border-top: 1px solid #1a1a1a;
-      margin: 0;
-    }
-
+    /* AS HEARD IN */
     .heard-in-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -470,10 +436,7 @@
       margin-top: 40px;
     }
 
-    .heard-in-item {
-      background: #0e0e0e;
-      padding: 24px 20px;
-    }
+    .heard-in-item { background: #0e0e0e; padding: 24px 20px; }
 
     .heard-source {
       font-family: 'Bebas Neue', sans-serif;
@@ -483,18 +446,67 @@
       margin-bottom: 4px;
     }
 
-    .heard-track {
-      font-size: 12px;
-      color: var(--gold);
-      margin-bottom: 6px;
-      font-style: italic;
+    .heard-track { font-size: 12px; color: var(--gold); margin-bottom: 6px; font-style: italic; }
+    .heard-year { font-size: 11px; letter-spacing: 2px; color: #444; }
+
+    /* PRESS */
+    .press-box {
+      border: 1px solid #1f1f1f;
+      padding: 36px;
+      background: #0e0e0e;
+      position: relative;
     }
 
-    .heard-year {
-      font-size: 11px;
-      letter-spacing: 2px;
-      color: #444;
+    .press-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: var(--gold);
     }
+
+    .press-quote {
+      font-family: 'Special Elite', serif;
+      font-size: 19px;
+      line-height: 1.6;
+      color: var(--off-white);
+      font-style: italic;
+      margin-bottom: 16px;
+    }
+
+    .press-source {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .press-source a {
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid #3a2a10;
+    }
+
+    .press-source a:hover { border-color: var(--gold); }
+
+    /* HR */
+    .hr { border: none; border-top: 1px solid #1a1a1a; margin: 0; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid #1a1a1a;
+      padding: 48px;
+      text-align: center;
+    }
+
+    .footer-logo-img {
+      width: 100px;
+      display: block;
+      margin: 0 auto 16px;
+      filter: invert(1) brightness(0.3);
+    }
+
+    .footer-copy { font-size: 11px; letter-spacing: 2px; color: #333; }
 
     @media (max-width: 640px) {
       nav { padding: 16px 20px; }
@@ -508,6 +520,7 @@
 </head>
 <body>
 
+  <!-- NAV -->
   <nav>
     <div class="nav-logo">MuFashions</div>
     <ul class="nav-links">
@@ -516,21 +529,25 @@
       <li><a href="#members">Band</a></li>
       <li><a href="#timeline">History</a></li>
       <li><a href="#merch">Merch</a></li>
+      <li><a href="#press">Press</a></li>
       <li><a href="lyrics.html">Lyrics</a></li>
     </ul>
   </nav>
 
+  <!-- HERO -->
   <div class="hero">
     <div class="hero-bg"></div>
     <div class="hero-rule-top"></div>
+    <img class="hero-logo" src="logo.png" alt="The MuFashions" />
     <div class="hero-eyebrow">Est. 1998 &mdash; Atlanta, Georgia</div>
-    <div class="hero-title">Mu<span>Fashions</span></div>
-    <p class="hero-sub">We are the Music. We are the Fashion.</p>
+    <div class="hero-tagline">Music + Fashion + Cheese</div>
+    <div class="hero-tagline-sub">We are the Music. We are the Fashion.</div>
     <div class="hero-divider"></div>
   </div>
 
   <hr class="hr" />
 
+  <!-- STORY -->
   <section id="story">
     <div class="section-eyebrow">The Story</div>
     <h2 class="section-title">Born in West Virginia.<br>Raised in Atlanta.</h2>
@@ -544,7 +561,7 @@
 
     <div class="pull-quote">
       <p>"MuFashions understood something that most bands their age didn't: that the joke and the feeling could occupy the same song at exactly the same time. That's rare. That's 'Sandwich.'"</p>
-      <cite>— Alternative Press, Spring 2004 (Retrospective)</cite>
+      <cite>— Static &amp; Noise, Spring 2004</cite>
     </div>
 
     <p>Travis Hagner came aboard as producer for the debut, recording the band in a rented space off Ponce de Leon Avenue using equipment of dubious provenance and a philosophy he described as "capture it before they talk themselves out of it." The result was <em>You Already Ate</em> — an album so specific in its references and so loose in its ambitions that it found almost no commercial traction and developed an almost immediate cult following. The lead single, "Sandwich," charted nowhere and was later covered by four separate artists who never publicly acknowledged the source material.</p>
@@ -556,6 +573,7 @@
 
   <hr class="hr" />
 
+  <!-- DISCOGRAPHY -->
   <section id="discography">
     <div class="section-eyebrow">Discography</div>
     <h2 class="section-title">The Recorded Work</h2>
@@ -595,13 +613,13 @@
 
   <hr class="hr" />
 
+  <!-- MEMBERS -->
   <section id="members">
     <div class="section-eyebrow">The Band</div>
     <h2 class="section-title">Who They Were</h2>
     <div class="section-rule"></div>
 
     <div class="members-grid">
-
       <div class="member-card">
         <div class="member-role">Lead Vocals / Guitar</div>
         <div class="member-name">Tyler Wolfe</div>
@@ -623,20 +641,20 @@
       <div class="member-card">
         <div class="member-role">Producer</div>
         <div class="member-name">Travis Hagner</div>
-        <p class="member-bio">Hagner's production philosophy was simple: capture it before they talk themselves out of it. Working in a rented room off Ponce de Leon with minimal resources and a frankly dangerous amount of caffeine, he shaped the raw material of both MuFashions records into something that sounded intentional — which was not always a given in the room. A childhood friend who stayed in the room longer than most.</p>
+        <p class="member-bio">Hagner's production philosophy was simple: capture it before they talk themselves out of it. Working in a rented room off Ponce de Leon with minimal resources and a frankly dangerous amount of caffeine, he shaped the raw material of both MuFashions records into something that sounded intentional — which was not always a given in the room.</p>
       </div>
 
       <div class="member-card">
         <div class="member-role">Management</div>
         <div class="member-name">Chris Cahill</div>
-        <p class="member-bio">Cahill believed in MuFashions with the particular certainty of someone who cannot be argued out of a position by evidence alone. He booked the shows, handled the money (such as it was), negotiated with venues that had not heard of the band and were uncertain they wanted to, and was present at every performance, usually standing at the back of the room, watching the door. He was, by all accounts, essential.</p>
+        <p class="member-bio">Cahill believed in MuFashions with the particular certainty of someone who cannot be argued out of a position by evidence alone. He booked the shows, handled the money, negotiated with venues that had not heard of the band and were uncertain they wanted to, and was present at every performance — usually standing at the back of the room, watching the door. He was, by all accounts, essential.</p>
       </div>
-
     </div>
   </section>
 
   <hr class="hr" />
 
+  <!-- TIMELINE -->
   <section id="timeline">
     <div class="section-eyebrow">History</div>
     <h2 class="section-title">A Record of Events</h2>
@@ -693,6 +711,7 @@
 
   <hr class="hr" />
 
+  <!-- AS HEARD IN -->
   <section>
     <div class="section-eyebrow">Cultural Footprint</div>
     <h2 class="section-title">As Heard In</h2>
@@ -725,17 +744,34 @@
 
   <hr class="hr" />
 
+  <!-- PRESS -->
+  <section id="press">
+    <div class="section-eyebrow">Press</div>
+    <h2 class="section-title">What They Said</h2>
+    <div class="section-rule"></div>
+
+    <div class="press-box">
+      <div class="press-quote">"One of the better records to come out of Atlanta in the last five years and almost nobody has heard it. There were reportedly 400 copies pressed. If you find one, don't let it go."</div>
+      <div class="press-source"><a href="review.html">Static &amp; Noise &mdash; March 2004</a></div>
+    </div>
+  </section>
+
+  <hr class="hr" />
+
+  <!-- MERCH -->
   <section id="merch">
     <div class="merch-box">
       <div class="merch-badge">Limited Availability</div>
+      <img class="merch-logo" src="logo.png" alt="The MuFashions — Music + Fashion + Cheese" />
       <div class="merch-title">The Shirt</div>
       <p class="merch-desc">There is a shirt. You may have already seen it, and had questions. Those questions are valid. The shirt is not widely available. If you are holding one, you are holding something the majority of the world does not have access to, and likely does not know it is missing.</p>
       <p class="merch-note">Inquire in person &mdash; that's how it's always worked</p>
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer>
-    <div class="footer-logo">MuFashions</div>
+    <img class="footer-logo-img" src="logo.png" alt="MuFashions" />
     <p class="footer-copy">Est. 1998, Atlanta, Georgia &mdash; Dissolved 2003 &mdash; Status: Unresolved</p>
   </footer>
 
